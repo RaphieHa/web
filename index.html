@@ -219,41 +219,7 @@
                     "view":"free",
                     "schedule_title":"hide",
                     "per_day":"1",
-                    "custom_css": `
-                      :root { --sg-blue: #2563eb; --sg-blue-dark: #1e40af; --sg-slate: #0f172a; --sg-muted: #64748b; --radius: 16px; }
-                      html, body { font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, sans-serif; color: var(--sg-slate); background: #ffffff; }
-                      a { color: var(--sg-blue); text-decoration: none; }
-                      a:hover { text-decoration: underline; }
-                      h1, h2, h3, h4, th { color: var(--sg-slate); font-weight: 800; }
-                      /* Primary action buttons */
-                      .btn, .button, button, input[type=submit], input[type=button] {
-                        background: var(--sg-blue) !important;
-                        border: none !important;
-                        color: #ffffff !important;
-                        border-radius: var(--radius) !important;
-                        padding: 0.6rem 1rem !important;
-                        font-weight: 600 !important;
-                        box-shadow: 0 8px 20px rgba(37, 99, 235, 0.25) !important;
-                      }
-                      .btn:hover, .button:hover, button:hover, input[type=submit]:hover, input[type=button]:hover {
-                        background: var(--sg-blue-dark) !important;
-                      }
-                      /* Inputs */
-                      input, select, textarea {
-                        border-radius: var(--radius) !important;
-                        border: 1px solid #e2e8f0 !important; /* slate-200 */
-                        padding: 0.5rem 0.75rem !important;
-                      }
-                      input:focus, select:focus, textarea:focus {
-                        outline: none !important;
-                        box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.25) !important;
-                        border-color: var(--sg-blue) !important;
-                      }
-                      /* Calendar highlights */
-                      .highlight, .selected, .active, .today {
-                        background: rgba(37, 99, 235, 0.08) !important;
-                      }
-                    `
+                    "custom_css": "body { font-family: 'Inter', sans-serif; color:#0f172a; background:#ffffff; } h1,h2,h3,h4 { color:#0f172a; font-weight:800; } a { color:#2563eb; } .btn,input[type=submit] { background:#2563eb !important; color:#fff !important; border-radius:0.75rem !important; font-weight:600; padding:0.6rem 1rem !important; } .btn:hover,input[type=submit]:hover { background:#1e40af !important; } input,select,textarea { border:1px solid #e2e8f0 !important; border-radius:0.75rem !important; padding:0.5rem 0.75rem !important; } input:focus,select:focus,textarea:focus { border-color:#2563eb !important; box-shadow:0 0 0 3px rgba(37,99,235,0.25) !important; outline:none !important; }"
                   }
                 );
               <\/script>
