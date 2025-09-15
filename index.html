@@ -1,334 +1,269 @@
-<!DOCTYPE html>
+v<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
+  <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Study Group — GCSE & Years 7–11 Tutoring</title>
-  <meta name="description" content="Modern one-page website for a tutoring business focused on GCSE and Years 7–11. Pricing, testimonials, and SuperSaaS-based booking." />
-  <meta name="color-scheme" content="light dark" />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-  <script src="https://cdn.tailwindcss.com"></script>
+  <title>Book Your Tutor — The Study Room</title>
+  <meta name="description" content="Book expert tutors for math, science, languages, and more. Transparent pricing, flexible scheduling, and instant confirmation via SuperSaaS." />
+  <meta name="theme-color" content="#0f766e" />
+  <meta property="og:title" content="Book Your Tutor — The Study Room" />
+  <meta property="og:description" content="Book expert tutors in minutes. Live availability, instant confirmation." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="/assets/og-preview.png" />
+  <link rel="icon" href="/favicon.ico" />
   <style>
-    :root { --radius: 1.25rem; }
-    html { scroll-behavior: smooth; }
-    body { font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, 'Helvetica Neue', Arial, 'Noto Sans', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji', sans-serif; }
-    .glass { backdrop-filter: blur(10px); background: rgba(255,255,255,0.65); }
-    .dark .glass{ background: rgba(20,20,20,0.6); }
-    .card { border-radius: var(--radius); box-shadow: 0 10px 30px rgba(2, 6, 23, 0.06); }
-    .ring-soft { box-shadow: inset 0 0 0 1px rgba(2,6,23,0.06); }
-    .gradient-bg { background: radial-gradient(1200px 600px at 20% -10%, rgba(59,130,246,0.25), transparent), radial-gradient(900px 500px at 90% 10%, rgba(16,185,129,0.25), transparent), linear-gradient(180deg, #ffffff, #f8fafc 40%, #ffffff); }
-    @media (prefers-color-scheme: dark){
-      .gradient-bg { background: radial-gradient(1200px 600px at 20% -10%, rgba(59,130,246,0.15), transparent), radial-gradient(900px 500px at 90% 10%, rgba(16,185,129,0.15), transparent), linear-gradient(180deg, #0b0f1a, #0b1220 40%, #0b0f1a); }
+    :root{
+      --bg:#0b0f14; /* page bg */
+      --card:#0f1620; /* surfaces */
+      --muted:#9fb3c8; /* secondary text */
+      --brand:#0ea5a6; /* teal */
+      --brand-600:#0f766e;
+      --ring:rgba(14,165,166,.35);
+      --text:#ecf3fb;
+    }
+    *,*::before,*::after{box-sizing:border-box}
+    html{color-scheme:dark light}
+    body{margin:0;font:16px/1.6 system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";background:linear-gradient(180deg,var(--bg),#0a1018 45%, #090f15);color:var(--text)}
+    a{color:var(--brand);text-decoration:none}
+    a:hover{text-decoration:underline}
+    .container{width:min(1100px, 92%);margin-inline:auto}
+    header{position:sticky;top:0;z-index:40;background:rgba(11,15,20,.7);backdrop-filter:saturate(180%) blur(10px);border-bottom:1px solid rgba(255,255,255,.06)}
+    .nav{display:flex;align-items:center;justify-content:space-between;padding:14px 0}
+    .brand{display:flex;gap:10px;align-items:center}
+    .logo{width:34px;height:34px;border-radius:10px;background:radial-gradient(120% 120% at 10% 10%, #16c2b8, #0ea5a6 50%, #0b7285 100%);box-shadow:0 8px 30px rgba(14,165,166,.35)}
+    nav ul{display:flex;gap:20px;list-style:none;margin:0;padding:0}
+    nav a{padding:8px 10px;border-radius:10px}
+    nav a:hover{background:rgba(255,255,255,.06)}
+    .cta{background:var(--brand);color:#022; padding:10px 14px;border-radius:12px;font-weight:600;box-shadow:0 10px 25px rgba(14,165,166,.35);border:1px solid rgba(255,255,255,.15)}
+    .cta:hover{filter:brightness(1.05)}
+
+    .hero{display:grid;grid-template-columns:1.2fr .8fr;gap:36px;align-items:center;padding:56px 0}
+    .hero h1{font-size:clamp(30px, 5vw, 50px);line-height:1.1;margin:0}
+    .hero p{color:var(--muted);margin:12px 0 20px}
+    .hero-card{background:linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.02));border:1px solid rgba(255,255,255,.08);padding:24px;border-radius:18px;box-shadow:0 20px 60px rgba(0,0,0,.35)}
+
+    .badges{display:flex;gap:12px;flex-wrap:wrap;margin:14px 0 0}
+    .badge{border:1px solid rgba(255,255,255,.12);padding:6px 10px;border-radius:999px;color:var(--muted);font-size:13px}
+
+    .section{padding:36px 0}
+    .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+    .card{background:var(--card);border:1px solid rgba(255,255,255,.08);border-radius:18px;padding:20px}
+    .card h3{margin:0 0 6px}
+    .muted{color:var(--muted)}
+
+    .pricing{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+    .price{background:linear-gradient(180deg, rgba(14,165,166,.12), rgba(14,165,166,.02));border:1px solid rgba(14,165,166,.25);border-radius:18px;padding:22px}
+    .price h3{margin:0 0 12px}
+    .price strong{font-size:32px}
+
+    .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+
+    .booking-embed{background:var(--card);border:1px solid rgba(255,255,255,.10);border-radius:18px;overflow:hidden}
+    .booking-embed header{position:sticky;top:auto;background:transparent;border:none}
+    .booking-embed .bar{display:flex;align-items:center;justify-content:space-between;padding:14px 16px;border-bottom:1px solid rgba(255,255,255,.08)}
+    .booking-embed .bar h2{margin:0;font-size:20px}
+
+    .faq dt{font-weight:700;margin-top:14px}
+    .faq dd{margin:6px 0 10px;color:var(--muted)}
+
+    .contact form{display:grid;gap:10px}
+    .input{background:#0b121a;border:1px solid rgba(255,255,255,.12);border-radius:12px;padding:10px 12px;color:var(--text)}
+    .input:focus{outline:2px solid var(--ring);border-color:var(--brand)}
+    .btn{background:var(--brand-600);color:white;border:none;border-radius:12px;padding:12px 14px;font-weight:600;cursor:pointer}
+    .btn:hover{filter:brightness(1.05)}
+
+    footer{border-top:1px solid rgba(255,255,255,.06);margin-top:36px}
+    .foot{display:flex;gap:20px;align-items:center;justify-content:space-between;padding:20px 0;color:var(--muted)}
+
+    .skip{position:absolute;left:-9999px;top:auto}
+    .skip:focus{left:12px;top:12px;background:var(--brand);color:#022;padding:8px 10px;border-radius:10px}
+
+    /* Responsive */
+    @media (max-width: 900px){
+      .hero{grid-template-columns:1fr}
+      .cards,.pricing,.grid-2{grid-template-columns:1fr}
+      nav ul{display:none}
+      .menu-btn{display:inline-flex}
+    }
+    @media (min-width: 901px){
+      .menu-btn{display:none}
     }
   </style>
 </head>
-<body class="gradient-bg text-slate-800 dark:text-slate-200">
-  <!-- Header -->
-  <header class="sticky top-0 z-50">
-    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-      <div class="mt-4 mb-4 flex items-center justify-between rounded-2xl border border-slate-200/60 dark:border-white/10 bg-white/70 dark:bg-slate-900/60 backdrop-blur p-3 card">
-        <a href="#" class="flex items-center gap-3">
-          <div class="h-9 w-9 rounded-xl bg-gradient-to-br from-blue-500 to-emerald-400"></div>
-          <span class="font-extrabold tracking-tight text-slate-900 dark:text-white">Study Group</span>
-        </a>
-        <nav class="hidden md:flex items-center gap-6 text-sm">
-          <a href="#services" class="hover:text-blue-600">Services</a>
-          <a href="#subjects" class="hover:text-blue-600">Subjects</a>
-          <a href="#pricing" class="hover:text-blue-600">Pricing</a>
-          <a href="#testimonials" class="hover:text-blue-600">Results</a>
-          <a href="#book" class="rounded-xl bg-slate-900 text-white dark:bg-white dark:text-slate-900 px-4 py-2 font-semibold hover:opacity-90">Book now</a>
-        </nav>
-        <button id="menuBtn" aria-label="Open menu" class="md:hidden inline-flex items-center justify-center rounded-xl border border-slate-200/60 dark:border-white/10 p-2">
-          <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
-        </button>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <header>
+    <div class="container nav" role="navigation" aria-label="Primary">
+      <div class="brand">
+        <div class="logo" aria-hidden="true"></div>
+        <strong>The Study Room</strong>
       </div>
-      <!-- Mobile menu -->
-      <div id="mobileMenu" class="md:hidden hidden mb-4 rounded-2xl border border-slate-200/60 dark:border-white/10 bg-white/80 dark:bg-slate-900/70 backdrop-blur p-3 card">
-        <div class="grid gap-2 text-sm">
-          <a class="px-3 py-2 rounded-lg hover:bg-slate-100/70 dark:hover:bg-white/10" href="#services">Services</a>
-          <a class="px-3 py-2 rounded-lg hover:bg-slate-100/70 dark:hover:bg-white/10" href="#subjects">Subjects</a>
-          <a class="px-3 py-2 rounded-lg hover:bg-slate-100/70 dark:hover:bg-white/10" href="#pricing">Pricing</a>
-          <a class="px-3 py-2 rounded-lg hover:bg-slate-100/70 dark:hover:bg-white/10" href="#testimonials">Results</a>
-          <a class="px-3 py-2 rounded-lg bg-slate-900 text-white dark:bg-white dark:text-slate-900" href="#book">Book now</a>
-        </div>
-      </div>
+      <button class="menu-btn" aria-expanded="false" aria-controls="menu">☰</button>
+      <nav id="menu">
+        <ul>
+          <li><a href="#how">How it works</a></li>
+          <li><a href="#pricing">Pricing</a></li>
+          <li><a href="#booking" class="cta">Book now</a></li>
+        </ul>
+      </nav>
     </div>
   </header>
 
-  <!-- Hero -->
-  <section class="relative overflow-hidden">
-    <div class="absolute inset-x-0 -top-24 -z-10 blur-3xl opacity-40" aria-hidden="true">
-      <div class="mx-auto h-72 max-w-5xl bg-gradient-to-r from-blue-400 via-emerald-400 to-cyan-400 rounded-full"></div>
-    </div>
-    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-6 pb-16 md:pt-10 md:pb-24">
-      <div class="grid md:grid-cols-2 gap-10 items-center">
-        <div>
-          <span class="inline-flex items-center gap-2 rounded-full border border-slate-200/70 dark:border-white/10 bg-white/70 dark:bg-slate-900/60 px-3 py-1 text-xs tracking-wide uppercase"> 1:1 • Online • GCSE & Years 7–11 </span>
-          <h1 class="mt-4 text-4xl sm:text-5xl lg:text-6xl font-black leading-tight tracking-tight">Learn faster with tutors who <span class="bg-gradient-to-r from-blue-600 via-emerald-500 to-cyan-500 bg-clip-text text-transparent">follow your curriculum</span>.</h1>
-          <p class="mt-5 text-slate-600 dark:text-slate-300 text-base sm:text-lg">For students who want simple explanations, targeted practice, and steady progress.</p>
-          <div class="mt-8 flex flex-wrap gap-3">
-            <a href="#book" class="rounded-xl bg-blue-600 text-white px-5 py-3 font-semibold hover:-translate-y-0.5 transform transition">Book now</a>
-            <a href="#pricing" class="rounded-xl ring-1 ring-slate-300/70 dark:ring-white/20 px-5 py-3 font-semibold hover:-translate-y-0.5 transform transition">See pricing</a>
-          </div>
-          <div class="mt-6 flex items-center gap-6 text-xs text-slate-500 dark:text-slate-400">
-            <div class="flex items-center gap-2"><span class="inline-block h-2 w-2 rounded-full bg-emerald-500"></span> GCSE & Years 7–11 focus</div>
-            <div class="flex items-center gap-2"><span class="inline-block h-2 w-2 rounded-full bg-blue-500"></span> Friendly, exam-style practice</div>
-          </div>
+  <main id="main" class="container">
+    <section class="hero" aria-labelledby="hero-title">
+      <div>
+        <h1 id="hero-title">Book expert tutors in minutes</h1>
+        <p>Live availability, instant confirmation, and flexible rescheduling. Math, science, languages, exam prep — all in one place.</p>
+        <div class="badges" aria-label="Highlights">
+          <span class="badge">Top‑rated tutors</span>
+          <span class="badge">Secure payments</span>
+          <span class="badge">Cancel up to 24h</span>
         </div>
-        <div class="relative">
-          <div class="relative rounded-[1.5rem] p-1 bg-gradient-to-br from-blue-500/50 via-cyan-400/50 to-emerald-400/50">
-            <div class="card ring-soft bg-white dark:bg-slate-900 p-4 md:p-6">
-              <div class="grid gap-3">
-                <div class="flex items-center justify-between">
-                  <div class="text-sm font-semibold">Progress Snapshot</div>
-                  <div class="text-xs text-slate-500">Example</div>
-                </div>
-                <div class="h-2 rounded-full bg-slate-100 dark:bg-white/10 overflow-hidden"><div class="h-full w-4/5 bg-gradient-to-r from-blue-600 to-emerald-500"></div></div>
-                <div class="grid grid-cols-3 gap-3 mt-3 text-xs">
-                  <div class="rounded-xl p-3 ring-soft bg-slate-50 dark:bg-white/5"><div class="text-slate-500">Maths</div><div class="text-lg font-bold">+20%</div></div>
-                  <div class="rounded-xl p-3 ring-soft bg-slate-50 dark:bg-white/5"><div class="text-slate-500">Science</div><div class="text-lg font-bold">+18%</div></div>
-                  <div class="rounded-xl p-3 ring-soft bg-slate-50 dark:bg-white/5"><div class="text-slate-500">English</div><div class="text-lg font-bold">+2 grades</div></div>
-                </div>
-                <a href="#book" class="mt-4 rounded-xl bg-slate-900 text-white dark:bg:white dark:text-slate-900 px-4 py-2 text-center font-semibold">Book now</a>
-                <p class="text-[11px] text-slate-500">Scheduling handled on this page — no messages needed.</p>
-              </div>
-            </div>
+        <p style="margin-top:16px"><a href="#booking" class="cta">See times & book</a></p>
+      </div>
+      <div class="hero-card" role="img" aria-label="Students studying with laptops and notebooks">
+        <p class="muted" style="margin:0">“We booked a calculus session 30 minutes before class — lifesaver.”</p>
+        <p style="margin:10px 0 0"><strong>— Maya K.</strong></p>
+      </div>
+    </section>
+
+    <section id="how" class="section">
+      <h2>How it works</h2>
+      <div class="cards" role="list">
+        <article class="card" role="listitem">
+          <h3>1. Pick a subject</h3>
+          <p class="muted">Tell us what you need — algebra, AP chem, IELTS, Python, and more.</p>
+        </article>
+        <article class="card" role="listitem">
+          <h3>2. Choose a time</h3>
+          <p class="muted">See real‑time availability and pick what works for you.</p>
+        </article>
+        <article class="card" role="listitem">
+          <h3>3. Confirm & pay</h3>
+          <p class="muted">Instant confirmation via email and calendar invite.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="booking" class="section booking-embed" aria-labelledby="booking-title">
+      <div class="bar container">
+        <h2 id="booking-title">Book your tutor</h2>
+        <span class="muted">Powered by SuperSaaS</span>
+      </div>
+      <div class="container" style="padding:16px 0 22px">
+        <!-- SuperSaaS widget (inserted exactly as provided) -->
+        <script src="https://cdn.supersaas.net/widget.js"></script>
+        <script class="supersaas-widget">
+          var supersaas = new SuperSaaS(
+            "594342:The_Study_Room_Booking",
+            "789604:BookYourTutor",
+            {
+              "widget_type": "frame",
+              "view": "free",
+              "schedule_title": "hide",
+              "per_day": "1"
+            }
+          );
+        </script>
+        <noscript>
+          <div class="card">
+            <p><strong>JavaScript is required</strong> to load the booking calendar. You can also open the schedule directly: <a href="https://www.supersaas.com/schedule/BookYourTutor/The_Study_Room_Booking">SuperSaaS — The Study Room Booking</a>.</p>
           </div>
+        </noscript>
+      </div>
+    </section>
+
+    <section id="pricing" class="section">
+      <h2>Pricing</h2>
+      <div class="pricing">
+        <div class="price">
+          <h3>Starter</h3>
+          <p class="muted">Ideal for quick help</p>
+          <p><strong>$29</strong> / 30 min</p>
+          <p class="muted">Email support • Reschedule once</p>
+        </div>
+        <div class="price" style="outline:2px solid rgba(14,165,166,.4)">
+          <h3>Standard</h3>
+          <p class="muted">Most popular</p>
+          <p><strong>$49</strong> / 60 min</p>
+          <p class="muted">Priority support • Reschedule twice</p>
+        </div>
+        <div class="price">
+          <h3>Intensive</h3>
+          <p class="muted">Exam crunch</p>
+          <p><strong>$89</strong> / 120 min</p>
+          <p class="muted">Email + chat • Flexible rescheduling</p>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Services -->
-  <section id="services" class="py-16 md:py-24">
-    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-      <div class="grid md:grid-cols-3 gap-6 md:gap-8">
-        <div class="md:col-span-1">
-          <h2 class="text-2xl sm:text-3xl font-extrabold">Tutoring that fits the way you learn</h2>
-          <p class="mt-3 text-slate-600 dark:text-slate-300">1:1 sessions, small groups, and focused exam techniques—online.</p>
-        </div>
-        <div class="md:col-span-2 grid sm:grid-cols-2 gap-6 md:pl-8 md:border-l md:border-slate-200 dark:md:border-slate-700">
-          <div class="card p-6 ring-soft bg-white/80 dark:bg-slate-900/60">
-            <div class="text-sm font-semibold mb-2">Personalised 1:1</div>
-            <p class="text-sm text-slate-600 dark:text-slate-300">Tailored to your goals and pace with clear after-session notes.</p>
-          </div>
-          <div class="card p-6 ring-soft bg-white/80 dark:bg-slate-900/60">
-            <div class="text-sm font-semibold mb-2">Exam Techniques</div>
-            <p class="text-sm text-slate-600 dark:text-slate-300">GCSE strategies, timed practice, and targeted feedback for Years 7–11.</p>
-          </div>
-          <div class="card p-6 ring-soft bg-white/80 dark:bg-slate-900/60">
-            <div class="text-sm font-semibold mb-2">Study Skills</div>
-            <p class="text-sm text-slate-600 dark:text-slate-300">Note-taking, memory techniques, and planning that actually stick.</p>
-          </div>
-          <div class="card p-6 ring-soft bg-white/80 dark:bg-slate-900/60">
-            <div class="text-sm font-semibold mb-2">Study Groups</div>
-            <p class="text-sm text-slate-600 dark:text-slate-300">Small group sessions for revision, problem-solving, and peer learning.</p>
-          </div>
-        </div>
+    <section class="section grid-2">
+      <div>
+        <h2>Why students choose us</h2>
+        <p class="muted">Hand‑picked tutors, structured lesson plans, and progress tracking after every session.</p>
+        <dl class="faq">
+          <dt>Can I cancel?</dt>
+          <dd>Yes — cancel or reschedule up to 24 hours before your session.</dd>
+          <dt>Do you support online and in‑person?</dt>
+          <dd>Yes. Choose what suits you while booking.</dd>
+          <dt>What if I don’t see a time?</dt>
+          <dd>Join the waitlist in the booking widget and we’ll notify you.</dd>
+        </dl>
       </div>
-    </div>
-  </section>
-
-  <!-- Subjects -->
-  <section id="subjects" class="py-16">
-    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-      <div class="flex items-end justify-between gap-4 mb-6">
-        <h2 class="text-2xl sm:text-3xl font-extrabold">Subjects</h2>
-        <a href="#book" class="text-sm font-semibold hover:underline">Need something else? Book or ask →</a>
+      <div class="card contact">
+        <h3>Questions? Get in touch</h3>
+        <form id="contact-form" aria-label="Contact form">
+          <label>
+            <span class="muted">Name</span>
+            <input class="input" type="text" name="name" required />
+          </label>
+          <label>
+            <span class="muted">Email</span>
+            <input class="input" type="email" name="email" required />
+          </label>
+          <label>
+            <span class="muted">Message</span>
+            <textarea class="input" name="message" rows="5" required></textarea>
+          </label>
+          <button class="btn" type="submit">Send message</button>
+          <p id="form-status" class="muted" role="status" aria-live="polite" style="margin:6px 0 0"></p>
+        </form>
       </div>
-      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
-        <div class="card p-4 ring-soft bg-white/80 dark:bg-slate-900/60"><div class="font-semibold">Maths</div><div class="text-sm text-slate-500 dark:text-slate-400">Geometry • Algebra • Statistics • More</div></div>
-        <div class="card p-4 ring-soft bg-white/80 dark:bg-slate-900/60"><div class="font-semibold">Sciences</div><div class="text-sm text-slate-500 dark:text-slate-400">Physics • Chemistry • Biology • Computer Science</div></div>
-        <div class="card p-4 ring-soft bg-white/80 dark:bg-slate-900/60"><div class="font-semibold">English & Languages</div><div class="text-sm text-slate-500 dark:text-slate-400">English Language & Literature • French • German • Portuguese</div></div>
-        <div class="card p-4 ring-soft bg-white/80 dark:bg-slate-900/60"><div class="font-semibold">Humanities</div><div class="text-sm text-slate-500 dark:text-slate-400">History • Business Studies • Geography • Music</div></div>
-      </div>
-    </div>
-  </section>
+    </section>
+  </main>
 
-  <!-- Testimonials -->
-  <section id="testimonials" class="py-16 md:py-24">
-    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-      <div class="grid md:grid-cols-3 gap-6 md:gap-8 items-start">
-        <div class="md:col-span-1">
-          <h2 class="text-2xl sm:text-3xl font-extrabold">Student results</h2>
-          <p class="mt-3 text-slate-600 dark:text-slate-300">Students love the clarity. Results speak for themselves.</p>
-        </div>
-        <div class="md:col-span-2 grid gap-6 md:pl-8 md:border-l md:border-slate-200 dark:md:border-slate-700">
-          <figure class="card p-6 ring-soft bg-white/80 dark:bg-slate-900/60">
-            <blockquote class="text-sm sm:text-base">“Clear, step-by-step explanations made past papers feel easy. Went from a 5 to a strong 8.”</blockquote>
-            <figcaption class="mt-3 text-xs text-slate-500">— Pedro Sousa, Y11</figcaption>
-          </figure>
-          <figure class="card p-6 ring-soft bg-white/80 dark:bg-slate-900/60">
-            <blockquote class="text-sm sm:text-base">“Loved the exam tips and weekly check-ins. Physics finally clicked.”</blockquote>
-            <figcaption class="mt-3 text-xs text-slate-500">— Max Rosa da Silva, Y11</figcaption>
-          </figure>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Pricing -->
-  <section id="pricing" class="py-16">
-    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-      <h2 class="text-2xl sm:text-3xl font-extrabold mb-6">Simple pricing</h2>
-      <div class="grid md:grid-cols-2 gap-6 md:divide-x md:divide-slate-200 dark:md:divide-slate-700">
-        <div class="card p-6 ring-soft bg-white/80 dark:bg-slate-900/60">
-          <div class="text-sm font-semibold">Standard</div>
-          <div class="mt-2 text-3xl font-black">€15<span class="text-base font-semibold text-slate-500">/hr</span></div>
-          <ul class="mt-4 text-sm space-y-2 text-slate-600 dark:text-slate-300">
-            <li>1:1 online</li>
-            <li>Focused on GCSE & Years 7–11</li>
-            <li>Practice questions + feedback</li>
-          </ul>
-          <a href="#book" class="mt-5 inline-block rounded-xl bg-blue-600 text-white px-4 py-2 font-semibold">Book now</a>
-        </div>
-        <div class="card p-6 ring-soft bg-white/80 dark:bg-slate-900/60 border-2 border-blue-600">
-          <div class="text-sm font-semibold">Custom Schedule</div>
-          <div class="mt-2 text-3xl font-black">Custom</div>
-          <ul class="mt-4 text-sm space-y-2 text-slate-600 dark:text-slate-300">
-            <li>Flexible timetables</li>
-            <li>Pairs/small groups</li>
-            <li>Ask for a tailored quote</li>
-          </ul>
-          <a href="#book" class="mt-5 inline-block rounded-xl bg-blue-600 text-white px-4 py-2 font-semibold">Book or ask</a>
-        </div>
-      </div>
-      <p class="mt-4 text-xs text-slate-500">Book directly below. No messages required.</p>
-    </div>
-  </section>
-
-  <!-- Booking -->
-  <section id="book" class="py-16 md:py-24">
-    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-      <div class="grid md:grid-cols-2 gap-8 items-start">
-        <div class="card p-6 ring-soft bg-white/80 dark:bg-slate-900/60">
-          <h3 class="text-xl font-extrabold">Book your session</h3>
-          <p class="mt-2 text-sm text-slate-600 dark:text-slate-300">Use our live calendar to pick a time instantly.</p>
-
-          <!-- SuperSaaS Widget -->
-          <script src="https://cdn.supersaas.net/widget.js"></script>
-          <script class="supersaas-widget">
-            var supersaas = new SuperSaaS(
-              "594342:The_Study_Room_Booking",
-              "789604:BookYourTutor",
-              {"widget_type":"frame","view":"free","schedule_title":"hide","per_day":"1"}
-            )
-          </script>
-
-          <div class="mt-3 flex flex-wrap gap-3 text-sm">
-            <a class="rounded-xl bg-blue-600 text-white px-4 py-2 font-semibold"
-               href="https://www.supersaas.com/schedule/594342/The_Study_Room_Booking/789604:BookYourTutor"
-               target="_blank" rel="noopener">Open in new tab</a>
-            <button class="rounded-xl px-4 py-2 ring-1 ring-slate-300/70 dark:ring-white/20 font-semibold"
-               onclick="navigator.clipboard.writeText('https://www.supersaas.com/schedule/594342/The_Study_Room_Booking/789604:BookYourTutor').then(()=>alert('Booking link copied!'))">
-               Copy link
-            </button>
-          </div>
-        </div>
-
-        <div class="card p-6 ring-soft bg-white/80 dark:bg-slate-900/60">
-          <h3 class="text-xl font-extrabold">Need help?</h3>
-          <p class="mt-2 text-sm text-slate-600 dark:text-slate-300">If you have questions about subjects, availability, or pricing, use the booking form to leave a note when you reserve a slot, or open the calendar in a new tab to explore more options.</p>
-          <ul class="mt-3 list-disc pl-5 text-sm text-slate-600 dark:text-slate-300">
-            <li>Choose your subject and preferred time.</li>
-            <li>Add details in the notes (year group, exam board, goals).</li>
-            <li>We’ll confirm by email after booking.</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- FAQ -->
-  <section class="py-16">
-    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-      <h2 class="text-2xl sm:text-3xl font-extrabold mb-6">FAQ</h2>
-      <div class="grid md:grid-cols-2 gap-6">
-        <details class="card p-5 ring-soft bg-white/80 dark:bg-slate-900/60">
-          <summary class="font-semibold cursor-pointer">Do you tutor online or in person?</summary>
-          <p class="mt-2 text-sm text-slate-600 dark:text-slate-300">Online exclusively, specifically on Zoom.</p>
-        </details>
-        <details class="card p-5 ring-soft bg-white/80 dark:bg-slate-900/60">
-          <summary class="font-semibold cursor-pointer">How do payments work?</summary>
-          <p class="mt-2 text-sm text-slate-600 dark:text-slate-300">Pay-as-you-go at €15/hr or book a custom bundle via the calendar.</p>
-        </details>
-        <details class="card p-5 ring-soft bg-white/80 dark:bg-slate-900/60">
-          <summary class="font-semibold cursor-pointer">Do you set homework?</summary>
-          <p class="mt-2 text-sm text-slate-600 dark:text-slate-300">Light practice between sessions helps a lot. We tailor it to your week.</p>
-        </details>
-        <details class="card p-5 ring-soft bg-white/80 dark:bg-slate-900/60">
-          <summary class="font-semibold cursor-pointer">What exams do you focus on?</summary>
-          <p class="mt-2 text-sm text-slate-600 dark:text-slate-300">GCSE plus Years 7–11 foundations. No SAT/IB/A-Levels/O-Levels.</p>
-        </details>
-      </div>
-    </div>
-  </section>
-
-  <!-- Footer -->
-  <footer class="py-12">
-    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-      <div class="grid md:grid-cols-2 gap-6 items-center">
-        <div>
-          <div class="flex items-center gap-3">
-            <div class="h-8 w-8 rounded-xl bg-gradient-to-br from-blue-500 to-emerald-400"></div>
-            <div class="font-extrabold">Study Group</div>
-          </div>
-          <p class="mt-2 text-sm text-slate-500">© <span id="year"></span> Study Group. All rights reserved.</p>
-        </div>
-        <div class="md:text-right text-sm">
-          <a class="hover:underline" href="#book">Book now</a>
-          <span class="mx-2 opacity-40">•</span>
-          <a class="hover:underline" href="#pricing">Pricing</a>
-          <span class="mx-2 opacity-40">•</span>
-          <button class="hover:underline" onclick="toggleTheme()" aria-label="Toggle dark mode">Toggle theme</button>
-        </div>
-      </div>
+  <footer>
+    <div class="container foot">
+      <small>© <span id="year"></span> The Study Room</small>
+      <a href="#hero-title" aria-label="Back to top">Back to top ↑</a>
     </div>
   </footer>
 
-  <!-- JSON-LD -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "EducationalOrganization",
-    "name": "Study Group",
-    "description": "GCSE and Years 7–11 tutoring — online.",
-    "areaServed": "Online",
-    "sameAs": ["https://www.supersaas.com/schedule/594342/The_Study_Room_Booking/789604:BookYourTutor"]
-  }
-  </script>
-
-  <!-- Scripts -->
   <script>
-  (function(){
-    'use strict';
-    document.addEventListener('DOMContentLoaded', function(){
-      const menuToggleBtn = document.getElementById('menuBtn');
-      const mobileMenuEl = document.getElementById('mobileMenu');
-      if(menuToggleBtn && mobileMenuEl){
-        menuToggleBtn.addEventListener('click', function(){
-          mobileMenuEl.classList.toggle('hidden');
-        });
-      }
-      function setThemeClass() {
-        if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-          document.documentElement.classList.add('dark');
-        } else {
-          document.documentElement.classList.remove('dark');
-        }
-      }
-      window.toggleTheme = function(){
-        const isDark = document.documentElement.classList.contains('dark');
-        localStorage.theme = isDark ? 'light' : 'dark';
-        setThemeClass();
-      };
-      setThemeClass();
-      const yearEl = document.getElementById('year');
-      if(yearEl){ yearEl.textContent = new Date().getFullYear(); }
-    });
-  })();
+    // Mobile menu toggle
+    const btn = document.querySelector('.menu-btn');
+    const menu = document.getElementById('menu');
+    if (btn) {
+      btn.addEventListener('click', () => {
+        const open = btn.getAttribute('aria-expanded') === 'true';
+        btn.setAttribute('aria-expanded', String(!open));
+        menu.style.display = open ? 'none' : 'block';
+      });
+    }
+
+    // Footer year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Contact form (placeholder handler)
+    const form = document.getElementById('contact-form');
+    if (form) {
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const status = document.getElementById('form-status');
+        status.textContent = 'Thanks! We\'ll get back to you shortly.';
+        form.reset();
+      });
+    }
   </script>
 </body>
 </html>
