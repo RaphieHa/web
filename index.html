@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Study Group — GCSE & Years 7–11 Tutoring</title>
+  <title>The Study Room — GCSE & Years 7–11 Tutoring</title>
   <meta name="description" content="Modern one-page website for a tutoring business focused on GCSE and Years 7–11. Pricing, testimonials, and SuperSaaS-based booking." />
   <meta name="color-scheme" content="light dark" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -31,7 +31,7 @@
       <div class="mt-4 mb-4 flex items-center justify-between rounded-2xl border border-slate-200/60 dark:border-white/10 bg-white/70 dark:bg-slate-900/60 backdrop-blur p-3 card">
         <a href="#" class="flex items-center gap-3">
           <div class="h-9 w-9 rounded-xl bg-gradient-to-br from-blue-500 to-emerald-400"></div>
-          <span class="font-extrabold tracking-tight text-slate-900 dark:text-white">Study Group</span>
+          <span class="font-extrabold tracking-tight text-slate-900 dark:text-white">The Study Room</span>
         </a>
         <nav class="hidden md:flex items-center gap-6 text-sm">
           <a href="#services" class="hover:text-blue-600">Services</a>
@@ -44,7 +44,7 @@
           <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
         </button>
       </div>
-      <!-- Ensure only ONE mobile menu exists with this ID -->
+      <!-- Mobile menu -->
       <div id="mobileMenu" class="md:hidden hidden mb-4 rounded-2xl border border-slate-200/60 dark:border-white/10 bg-white/80 dark:bg-slate-900/70 backdrop-blur p-3 card">
         <div class="grid gap-2 text-sm">
           <a class="px-3 py-2 rounded-lg hover:bg-slate-100/70 dark:hover:bg-white/10" href="#services">Services</a>
@@ -77,15 +77,17 @@
             <div class="flex items-center gap-2"><span class="inline-block h-2 w-2 rounded-full bg-blue-500"></span> Friendly, exam-style practice</div>
           </div>
         </div>
-
-        <!-- Right column — replaced Progress Snapshot with a simple brand tile -->
+        <!-- Right column — title only -->
         <div class="relative">
           <div class="relative rounded-[1.5rem] p-1 bg-gradient-to-br from-blue-500/50 via-cyan-400/50 to-emerald-400/50">
             <div class="card ring-soft bg-white dark:bg-slate-900 p-10 flex items-center justify-center">
               <div class="text-center space-y-3">
-                <div class="mx-auto h-14 w-14 rounded-2xl bg-gradient-to-br from-blue-500 to-emerald-400"></div>
-                <div class="text-2xl font-extrabold">Study Group</div>
-                <div class="text-sm text-slate-500 dark:text-slate-400">GCSE & Years 7–11</div>
+                <div class="text-4xl sm:text-5xl font-black tracking-tight text-slate-900 dark:text-white">
+                  The Study Room
+                </div>
+                <div class="text-base font-medium text-slate-500 dark:text-slate-400">
+                  GCSE & Years 7–11
+                </div>
               </div>
             </div>
           </div>
@@ -265,9 +267,9 @@
         <div>
           <div class="flex items-center gap-3">
             <div class="h-8 w-8 rounded-xl bg-gradient-to-br from-blue-500 to-emerald-400"></div>
-            <div class="font-extrabold">Study Group</div>
+            <div class="font-extrabold">The Study Room</div>
           </div>
-          <p class="mt-2 text-sm text-slate-500">© <span id="year"></span> Study Group. All rights reserved.</p>
+          <p class="mt-2 text-sm text-slate-500">© <span id="year"></span> The Study Room. All rights reserved.</p>
         </div>
         <div class="md:text-right text-sm">
           <a class="hover:underline" href="#book">Book now</a>
@@ -285,7 +287,7 @@
   {
     "@context": "https://schema.org",
     "@type": "EducationalOrganization",
-    "name": "Study Group",
+    "name": "The Study Room",
     "description": "GCSE and Years 7–11 tutoring — online.",
     "areaServed": "Online",
     "sameAs": ["https://www.supersaas.com/schedule/594342/The_Study_Room_Booking/789604:BookYourTutor"]
@@ -293,7 +295,6 @@
   </script>
 
   <script>
-  // Wrap everything in an IIFE to avoid duplicate global identifiers if the script is injected more than once.
   (function(){
     'use strict';
     document.addEventListener('DOMContentLoaded', function(){
@@ -305,7 +306,6 @@
           mobileMenuEl.classList.toggle('hidden');
         });
       }
-
       // Dark / light theme toggle
       function setThemeClass() {
         if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
@@ -320,22 +320,17 @@
         setThemeClass();
       };
       setThemeClass();
-
-      // Utilities
+      // Year
       const yearEl = document.getElementById('year');
       if(yearEl){ yearEl.textContent = new Date().getFullYear(); }
-
-      // --- Self-tests (basic, non-intrusive) ---
+      // Self-tests
       try {
-        // Test: Only one mobileMenu exists
         console.assert(document.querySelectorAll('#mobileMenu').length === 1, 'Expected exactly one element with id="mobileMenu"');
-        // Test: Toggling works
         if(mobileMenuEl){
           const wasHidden = mobileMenuEl.classList.contains('hidden');
           menuToggleBtn && menuToggleBtn.dispatchEvent(new Event('click'));
           const changed = mobileMenuEl.classList.contains('hidden') !== wasHidden;
-          console.assert(changed, 'Clicking the menu button should toggle the hidden state of #mobileMenu');
-          // revert to original state
+          console.assert(changed, 'Menu toggle should change hidden state');
           menuToggleBtn && menuToggleBtn.dispatchEvent(new Event('click'));
         }
       } catch (e) {
@@ -346,5 +341,3 @@
   </script>
 </body>
 </html>
-
-
